@@ -23,7 +23,7 @@ import java.io.UnsupportedEncodingException;
 import leesiongchan.reactnativeescpos.helpers.EscPosHelper;
 import leesiongchan.reactnativeescpos.utils.BitMatrixUtils;
 import static io.github.escposjava.print.Commands.*;
-
+import android.util.Base64;
 public class PrinterService {
     public static final int PRINTING_WIDTH_58_MM = 384;
     public static final int PRINTING_WIDTH_76_MM = 450;
@@ -114,6 +114,13 @@ public class PrinterService {
 
     public void printImage(String filePath) throws IOException {
         printImage(readImage(filePath, context));
+    }
+    
+    public void printImagebyBase64(String base64Image) throws IOException {
+         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+                return decodedByte;
+        printImage(decodedByte);
     }
 
     public void printImage(Bitmap image) throws IOException {
