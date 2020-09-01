@@ -119,8 +119,7 @@ public class PrinterService {
     public void printImagebyBase64(String base64Image) throws IOException {
          byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-                return decodedByte;
-        printImageNoResize(decodedByte);
+                printImageNoResize(decodedByte);
     }
     public void printImageNoResize(Bitmap image) throws IOException {
         ByteArrayOutputStream baos = generateImageByteArrayOutputStream(image);
