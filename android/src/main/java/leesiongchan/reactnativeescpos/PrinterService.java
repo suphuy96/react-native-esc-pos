@@ -121,6 +121,14 @@ public class PrinterService {
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 printImageNoResize(decodedByte);
     }
+     public void printImagebyBase64Resize(String base64Image,int WIDTH,int HEIGHT) throws IOException {
+         byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
+                Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            
+               image = EscPosHelper.resizeImage(decodedByte, WIDTH, HEIGHT);
+        ByteArrayOutputStream baos = generateImageByteArrayOutputStream(decodedByte);
+        write(baos.toByteArray());
+    }
     public void printImageNoResize(Bitmap image) throws IOException {
         ByteArrayOutputStream baos = generateImageByteArrayOutputStream(image);
         write(baos.toByteArray());
