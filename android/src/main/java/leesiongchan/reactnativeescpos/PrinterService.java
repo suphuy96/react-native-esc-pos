@@ -125,7 +125,7 @@ public class PrinterService {
          byte[] decodedString = Base64.decode(base64Image, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             
-               image = EscPosHelper.resizeImage(decodedByte, WIDTH, HEIGHT);
+               decodedByte = EscPosHelper.resizeImage(decodedByte, WIDTH, HEIGHT);
         ByteArrayOutputStream baos = generateImageByteArrayOutputStream(decodedByte);
         write(baos.toByteArray());
     }
