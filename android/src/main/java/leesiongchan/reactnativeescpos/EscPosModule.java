@@ -150,7 +150,7 @@ public class EscPosModule extends ReactContextBaseJavaModule {
     }
 
          @ReactMethod
-    public void printImagebyBase64Resize(String base64Image,Int w,Int, height, Promise promise) {
+    public void printImagebyBase64Resize(String base64Image,int w,int height, Promise promise) {
         try {
             printerService.printImagebyBase64Resize(base64Image,w, height);
             promise.resolve(true);
